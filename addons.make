@@ -1,0 +1,3 @@
+ofxThreadedImageLoader
+ofxXmlSettings
+ofxUI-master
