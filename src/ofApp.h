@@ -26,6 +26,7 @@ public:
     
     //Number of video panels
     ofVideoPlayer vids;
+    ofVideoPlayer vid2;
     float vidSpeed = 1;
 
     void audioRequested (float * output, int bufferSize, int nChannels);

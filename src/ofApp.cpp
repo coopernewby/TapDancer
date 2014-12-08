@@ -33,7 +33,7 @@ void ofApp::setup(){
     //BTNdim = ofGetWidth() / 5.0f;
     
     SAMPLE_RATE = 44100;
-    setBPM(123.0);//121
+    setBPM(122.0);//123
     pos = 0; // running sample count
     ofSoundStreamSetup(1,0,this); // sound stream initialised so samples can be counted
     
@@ -59,7 +59,7 @@ void ofApp::setup(){
     
     //Sound setup
     
-    bang.loadSound("sounds/Bang Sandy Rivera.mp3");
+    bang.loadSound("sounds/Milking.mp3");
     bang.setVolume(0.75f);
     bang.setMultiPlay(false);
     
@@ -100,20 +100,21 @@ void ofApp::setup(){
         //cout << vid_url << endl;
         
         //string vid_url = "https://redirector.googlevideo.com/videoplayback?dur=180.813&itag=18&key=yt5&ip=2601%3A9%3A4980%3A920%3Acc6f%3A3115%3Ae9f2%3Ad20f&ipbits=0&source=youtube&sver=3&id=1d9253818cdff451&expire=1417612855&sparams=dur%2Cgcr%2Cid%2Cip%2Cipbits%2Citag%2Crequiressl%2Csource%2Cupn%2Cexpire&requiressl=yes&fexp=907259%2C916944%2C927622%2C932404%2C934601%2C936112%2C943909%2C943917%2C947209%2C948124%2C949415%2C952302%2C952605%2C952901%2C953912%2C957103%2C957105%2C957201&gcr=us&upn=Unek05bZMtE&signature=63F7BF076A7977F7BD6C81B889130E5777023F1A.14277638A474783AE16923300A7D2575E340776E&ratebypass=yes";
-        //string vid_url = "https://r19---sn-o097zne7.googlevideo.com/videoplayback?source=youtube&ip=171.66.209.5&signature=D97C1A2F2296793336615F4A2D09A879A91487FF.F9E05E11F4A5A46E031B611BAA1D4BBDF027E529&sparams=dur%2Cgcr%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&id=o-AFiltfs435typ4jsFsjsvOR5DvgQP2X1omSH9lWeHkZe&ratebypass=yes&sver=3&mv=m&requiressl=yes&mm=31&expire=1417846532&gcr=us&ipbits=0&initcwndbps=9477500&upn=lFKFLQPSip4&key=yt5&dur=180.813&mt=1417824874&itag=18&fexp=907259%2C927622%2C932404%2C934947%2C935639%2C938692%2C943917%2C947209%2C948124%2C949427%2C951501%2C952302%2C952605%2C952901%2C953912%2C957103%2C957105%2C957201&ms=au";
+        string vid_url = "https://r11---sn-nwj7knlz.googlevideo.com/videoplayback?requiressl=yes&sver=3&itag=18&ratebypass=yes&expire=1418088995&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&ipbits=0&ip=67.161.9.40&key=yt5&fexp=907259%2C927622%2C932404%2C943917%2C947209%2C948124%2C952302%2C952605%2C952901%2C953912%2C957103%2C957105%2C957201&mv=m&source=youtube&ms=au&upn=8sgWaXtnGkA&signature=D55F234022AB847A1E50DFFBE57F21303049BA36.10F09A91028F11AFBF1E9948D453DCEFF8051127&mm=31&id=o-ADeY2fp3uOGyLLgsbofL1SJ0GB5Ft6BJsuHyF8ScYsud&dur=91.533&initcwndbps=2192500&mt=1418067313";
     
-    string vid_url = "https://r11---sn-nwj7kner.googlevideo.com/videoplayback?ms=au&fexp=900245%2C901493%2C907259%2C927622%2C932404%2C940939%2C943917%2C947209%2C948124%2C952302%2C952605%2C952901%2C953912%2C955301%2C957103%2C957105%2C957201&itag=18&mt=1418011603&dur=376.465&key=yt5&upn=OcGBBRh-4Dc&initcwndbps=1832500&ipbits=0&expire=1418033242&mm=31&mv=m&requiressl=yes&sver=3&ratebypass=yes&id=o-AM2Y88G4RJV9whGmJeEDdZ2aDju8W2umW60bFSYLMsKv&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&source=youtube&signature=5AAF09AE2396B1E026E25C1AB8E4BD54E95A502C.071828CB6DFFBFD6768F2B5645FE6BEB959F3524&ip=67.161.9.40";
+    string vid_url2 = "https://r13---sn-o097znee.googlevideo.com/videoplayback?id=o-APwtQjwpZowVUkzUT9NZLfPCjrSOMj4DR-sUlcg39qn0&upn=UhTMolmkjtI&expire=1418087589&mt=1418065908&requiressl=yes&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&sver=3&key=yt5&signature=1F8671FB3A3600ECF17C59FA73E89BD1BCB66B04.7FCA248BF7DF8E586AF310408D6D3D700FCF3086&initcwndbps=2115000&fexp=901495%2C907259%2C921418%2C924638%2C927622%2C932404%2C943917%2C947209%2C948124%2C952302%2C952605%2C952901%2C953912%2C957103%2C957105%2C957201&ipbits=0&mm=31&ms=au&ratebypass=yes&mv=m&source=youtube&itag=18&dur=217.640&ip=2601%3A9%3A4980%3A920%3A3502%3Ab058%3Abc1%3Ad89";
     
         //Load the video (from a url!) and start playing it
-        vids.loadMovie(vid_url);
+        vids.loadMovie(vid_url2);
         vids.setVolume(.9);
         vids.setSpeed(1);
         vids.play();
     
-    gui = new ofxUICanvas(newW/2, newH/2, 32, 32);
-    gui->setDrawBack(true);
-    gui->addMultiImageToggle("NUDGE BACK", "GUI/nudgeBk.png", false );
-    ofAddListener(gui->newGUIEvent,this,&ofApp::guiEvent);
+    
+//    gui = new ofxUICanvas(newW/2, newH/2, 32, 32);
+//    gui->setDrawBack(true);
+//    gui->addMultiImageToggle("NUDGE BACK", "GUI/nudgeBk.png", false );
+//    ofAddListener(gui->newGUIEvent,this,&ofApp::guiEvent);
 
     
 }
@@ -191,7 +192,7 @@ void ofApp::draw(){
     ofSetColor(0);
     ofDrawBitmapString("Hit Spacebar to tap BPM", 50, 550);
     ofDrawBitmapString("BPM: " + ofToString(bpmTapper.bpm()), 50, 500);
-    bpmTapper.draw(50, 600, 10);
+    //bpmTapper.draw(50, 600, 10);
 
 
     
@@ -218,6 +219,10 @@ void ofApp::guiEvent(ofxUIEventArgs &e)
     {
         ofxUIButton *button = (ofxUIButton *) e.getButton();
         ofSoundStopAll();
+    }
+    else if(name == "resetBPM")
+    {
+        bpmTapper.startFresh();
     }
     //Toggles the loop mode on
     else if(name == "Loop")
@@ -512,6 +517,7 @@ void ofApp::setGUI2()
     gui2->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     gui2->setGlobalButtonDimension(32);
     gui2->addButton("Stop", false)->setLabelVisible(true);
+    gui2->addButton("resetBPM", false)->setLabelVisible(true);
     gui2->addToggle("Loop", false)->setLabelVisible(true);
     
     gui2->setPosition(212*3,0);
