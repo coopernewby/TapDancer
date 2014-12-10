@@ -27,13 +27,13 @@ void ofApp::setup(){
     bdrawPadding = false;
     //loop off at init
     loop = false;
-    newW=640;
-    newH=480;
+    newW=1024;
+    newH=768;
     
     //BTNdim = ofGetWidth() / 5.0f;
     
     SAMPLE_RATE = 44100;
-    setBPM(122.0);//123
+    setBPM(120.0);//123
     pos = 0; // running sample count
     ofSoundStreamSetup(1,0,this); // sound stream initialised so samples can be counted
     
@@ -59,7 +59,7 @@ void ofApp::setup(){
     
     //Sound setup
     
-    bang.loadSound("sounds/True (Mark Lower Remix).mp3");
+    bang.loadSound("sounds/cazzette-sleepless-hotel-garuda-thero-remix.mp3");
     bang.setVolume(0.75f);
     bang.setMultiPlay(false);
     
@@ -79,8 +79,6 @@ void ofApp::setup(){
 //    youtube.open("http://gdata.youtube.com/feeds/api/videos?q=skateboarding+dog&alt=json");
 //    // Loop through all of the feed->entry items in the feed
 //    int numVideos = min(4, (int)youtube["feed"]["entry"].size());
-    for(int i=0; i<2; i++)
-    {
         // use ofToDataPath to get the complete path to the youtube-dl program
         // https://github.com/rg3/youtube-dl
         // In each one, there will be a "link" item that contains multiple "href" strings
@@ -93,23 +91,30 @@ void ofApp::setup(){
         // Assemble a command just like the one you would use on the command line
         // Format 18 = H264  (see http://en.wikipedia.org/wiki/YouTube#Quality_and_codecs)
         string command = youtube_dl+" --get-url --format 18 "+youtube_url;
-        cout << command << endl;
+        //cout << command << endl;
         
         // Get the full (nasty) URL of the raw video
         //string vid_url = ofSystemCall(command);
         //cout << vid_url << endl;
         
-        string vid_url = "https://r16---sn-o097zned.googlevideo.com/videoplayback?ipbits=0&initcwndbps=1953750&expire=1418204786&mm=31&itag=18&mt=1418183160&fexp=907259%2C924637%2C927622%2C932404%2C935679%2C941004%2C941427%2C942807%2C943917%2C947209%2C947602%2C948124%2C952302%2C952605%2C952901%2C953912%2C955301%2C957103%2C957105%2C957201&ms=au&key=yt5&upn=qCX121a3GmY&dur=188.174&mv=m&signature=96EE85930EBFDB0CC980557A36A3294DB57DC52F.23566176F28EEEB7CFE2FF9DDB9409213FA5A6E5&ip=67.161.9.40&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&sver=3&ratebypass=yes&requiressl=yes&source=youtube&id=o-AHZ29fqoWac0Zdo0ynMvVv6b8M2r6OaVDi4NhSroXWe9";
-        //string vid_url1 = "https://r11---sn-nwj7knlz.googlevideo.com/videoplayback?requiressl=yes&sver=3&itag=18&ratebypass=yes&expire=1418088995&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&ipbits=0&ip=67.161.9.40&key=yt5&fexp=907259%2C927622%2C932404%2C943917%2C947209%2C948124%2C952302%2C952605%2C952901%2C953912%2C957103%2C957105%2C957201&mv=m&source=youtube&ms=au&upn=8sgWaXtnGkA&signature=D55F234022AB847A1E50DFFBE57F21303049BA36.10F09A91028F11AFBF1E9948D453DCEFF8051127&mm=31&id=o-ADeY2fp3uOGyLLgsbofL1SJ0GB5Ft6BJsuHyF8ScYsud&dur=91.533&initcwndbps=2192500&mt=1418067313";
+        string vid_url0 = "https://r11---sn-o097znel.googlevideo.com/videoplayback?ip=67.161.9.40&ms=au&mv=m&initcwndbps=2253750&ipbits=0&dur=376.465&id=o-AAdrZrA9Si8vlGiBvNAQBWan7k85S1mHKfZjgPf-vQPW&key=yt5&signature=1C45B030AC339B4ADBC81BC153FCC0F050C5FA4E.9CA6BA028DA1E4D6559DAB7DD42C4E1DD27FD6E6&mm=31&mt=1418206605&sver=3&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&upn=u1vxV68103g&requiressl=yes&source=youtube&itag=18&expire=1418228256&fexp=904849%2C907259%2C927622%2C931352%2C932404%2C936118%2C941004%2C943917%2C947209%2C948124%2C952302%2C952605%2C952901%2C953912%2C957103%2C957105%2C957201&ratebypass=yes";
+        
+        string vid_url1 = "https://r19---sn-nwj7kner.googlevideo.com/videoplayback?sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&key=yt5&fexp=907259%2C913430%2C916635%2C927622%2C932404%2C936118%2C943917%2C947209%2C948124%2C952005%2C952302%2C952605%2C952901%2C953912%2C955301%2C957103%2C957105%2C957201&expire=1418227564&upn=V8NxzIv25yA&ipbits=0&dur=161.935&signature=B33F37873AF08266214047E5352C7A36ECB7AE2B.247500948A7F5C128239F51996D9732425F83954&itag=18&source=youtube&ms=au&ip=67.161.9.40&mv=m&ratebypass=yes&mt=1418205885&requiressl=yes&id=o-ADdKpwdChRNRk9_pn-u8x91UfO2_FUIzxGCImJt8qM4c&sver=3&mm=31&initcwndbps=2228750";
     
-    string vid_url2 = "https://r16---sn-nwj7knel.googlevideo.com/videoplayback?key=yt5&signature=F7B6F84803021B5A54CF3997AAAF2F8FA11C920D.5B72DB85FE73ACA2611DF71E836415B1B665399E&upn=ILgxSMqfK6E&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&ratebypass=yes&ipbits=0&itag=18&fexp=900245%2C907259%2C912733%2C927622%2C932404%2C943917%2C947209%2C948124%2C952302%2C952605%2C952901%2C953912%2C957103%2C957105%2C957201&initcwndbps=1241250&ip=67.161.9.40&requiressl=yes&mm=31&source=youtube&dur=182.671&mv=m&mt=1418179625&ms=au&id=o-AJ5b7AN1rAYEp8lw-ImaPzT6o1exeLDP1kXudT6q6KSy&sver=3&expire=1418201268";
+        string vid_url2 = "https://r19---sn-o097znel.googlevideo.com/videoplayback?requiressl=yes&ip=67.161.9.40&ms=au&mv=m&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&mt=1418205956&signature=A87A8491111A37D282558B6BC908A2BE0E7BCA8A.0939C7143352411F37E57447A7ED54817D0F9D6B&id=o-AO1oZnSYqid5u94DYnciYWom8x2fE7qfQAYjHDg4hfJV&mm=31&itag=18&initcwndbps=2217500&fexp=901496%2C907259%2C927622%2C929305%2C932404%2C935693%2C941004%2C943917%2C947209%2C947601%2C948124%2C952302%2C952605%2C952901%2C953912%2C957103%2C957105%2C957201&source=youtube&upn=O9voNnNjXJI&sver=3&dur=161.935&ipbits=0&key=yt5&expire=1418227614&ratebypass=yes";
+        
+        string vid_url3 = "https://r1---sn-o097znel.googlevideo.com/videoplayback?mv=m&pcm2=no&mt=1418206033&ms=au&source=youtube&expire=1418227691&sver=3&dur=85.124&key=yt5&requiressl=yes&mm=31&ratebypass=yes&itag=18&initcwndbps=2222500&upn=qOz1uPONQLc&id=o-ALW-E8Coxeut4lnWN71SyI0hgY08s82bMuceGImAt2jL&ip=67.161.9.40&fexp=905639%2C907259%2C917000%2C927622%2C932404%2C938644%2C941004%2C943915%2C943917%2C947209%2C948124%2C948207%2C952302%2C952605%2C952901%2C953912%2C955301%2C957103%2C957105%2C957201&signature=49F21DD21B3C5012CA9D8BE456740033C38928B4.90118FF562461EFF9CC9011C27F1B8AE158FE930&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cpcm2%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&ipbits=0";
     
-        //Load the video (from a url!) and start playing it
-        vids[i].loadMovie(vid_url);
+        //Load the video (from a url!)
+        vids[0].loadMovie(vid_url0);
+        vids[1].loadMovie(vid_url1);
+        vids[2].loadMovie(vid_url2);
+        vids[3].loadMovie(vid_url3);
+    
+    for(int i=0; i<4; i++){
         vids[i].setVolume(.9);
         vids[i].setSpeed(1);
     }
-    
     
 //    gui = new ofxUICanvas(newW/2, newH/2, 32, 32);
 //    gui->setDrawBack(true);
@@ -130,8 +135,7 @@ void ofApp::setBPM(float targetBPM){
 //--------------------------------------------------------------
 void ofApp::audioRequested(float *output, int bufferSize, int numChannels) {
     bool startBeatDetected=false;
-    int i;
-    for(i = 0; i < bufferSize; i++) {
+    for(int i = 0; i < bufferSize; i++) {
         pos++; // this gets incremented with every sample
         // when lengthOfOneBeatInSamples goes into
         // pos a whole number of times, we've entered a new quarter beat
@@ -169,7 +173,11 @@ void ofApp::audioRequested(float *output, int bufferSize, int numChannels) {
 void ofApp::update(){
     ofSoundUpdate();
     bpmTapper.update();
-    vids[1].update();
+    //vids[1].update();
+    for(int i=0; i<4; i++)
+    {
+        vids[i].update();
+    }
     
 }
 
@@ -183,20 +191,35 @@ void ofApp::draw(){
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetColor(255,255,255);
     ofDrawBitmapString("BPM: "+ofToString(BPM), 100, 110);
-    //vids.draw(0,0,640,480);
-    vids[1].draw((newW/2-newW/1.5/2), 0, newW/1.5, newH/1.5);
+    
+    if (currentVid == 0){
+    vids[currentVid].draw((newW/2-newW/1.3/2), 20, newW/1.3, newH/1.3);
+    }
+    if (currentVid == 1){
+        vids[currentVid].draw((newW/2-newW/1.3/2), 20, newW/1.3, newH/1.3);
+    }
+    if (currentVid == 2){
+        vids[currentVid].draw((newW/2-newW/1.3/2), 20, newW/1.3, newH/1.3);
+    }
+    if (currentVid == 3){
+        vids[currentVid].draw((newW/2-newW/1.3/2), 20, newW/1.3, newH/1.3);
+    }
+    if (vidPanels == true){
+    vids[0].draw(newW/2, 0, newW/2, newH/2);
+    vids[1].draw( 0 , newH/2, newW/2, newH/2);
+    vids[2].draw( 0 , 0 , newW/2, newH/2);
+    vids[3].draw(newW/2,newH/2, newW/2, newH/2);
+    }
+
     
     //ofDrawBitmapString("Pos: "+ofToString(pos), 100, 130);
     //ofDrawBitmapString("Samples per beat: "+ofToString(lengthOfOneBeatInSamples), 100, 150);
     ofSetColor(0);
     ofDrawBitmapString("Hit Spacebar to tap BPM", 50, 550);
     ofDrawBitmapString("BPM: " + ofToString(bpmTapper.bpm()), 50, 500);
-    //bpmTapper.draw(50, 600, 10);
 
 
     
-
-
 }
 
 void ofApp::guiEvent(ofxUIEventArgs &e)
@@ -265,6 +288,7 @@ void ofApp::guiEvent(ofxUIEventArgs &e)
     else if(name == "VIDPANEL")
     {
         ofxUIImageToggle *toggle = (ofxUIImageToggle *) e.getToggle();
+        vidPanels = !vidPanels;
         
     }
     else if(name == "MUTE")
@@ -301,10 +325,12 @@ void ofApp::exit()
 {
     gui1->saveSettings("gui1Settings.xml");
     gui2->saveSettings("gui2Settings.xml");
+    gui3->saveSettings("gui2Settings.xml");
     
 
     delete gui1;
     delete gui2;
+    delete gui3;
     delete[] buffer;
 }
 
@@ -397,8 +423,23 @@ void ofApp::keyPressed(int key){
             gui2->setDrawWidgetPaddingOutline(bdrawPadding);
             break;
         
+        case OF_KEY_LEFT:
+            if(currentVid>0){
+                currentVid--;
+            }
+            else currentVid = 3;
+            break;
+        
+        case OF_KEY_RIGHT:
+            if(currentVid<4){
+            currentVid++;
+            }
+            else currentVid = 0;
+            break;
+            
         case 'p':
-            vids[1].play();
+            //video play
+            vids[currentVid].play();
             break;
             
         case '[':
@@ -413,30 +454,32 @@ void ofApp::keyPressed(int key){
             
         case '1':
             gui1->toggleVisible();
+            vids[currentVid].getCurrentFrame();
             break;
             
         case '2':
             gui2->toggleVisible();
+            vids[currentVid].getCurrentFrame();
             break;
         case ' ':
         {
-            bpmTapper.tap();
+            bpmTapper[currentVid].tap();
             cout << vidSpeed << endl;
             break;
         }
         case 's':
         {
-            vids[1].setVolume(0);
-            vidSpeed =  .01*(100*BPM/bpmTapper.bpm());
-            vids[1].setSpeed(vidSpeed);
+            vids[currentVid].setVolume(0);
+            vidSpeed =  .01*(100*BPM/bpmTapper[currentVid].bpm());
+            vids[currentVid].setSpeed(vidSpeed);
             gui1->setVisible(false);
             break;
         }
         //Nudge video backwards
         case ',':
         {
-            vids[1].previousFrame();
-            vids[1].play();
+            vids[currentVid].previousFrame();
+            vids[currentVid].play();
             ofAddListener(gui2->newGUIEvent,this,&ofApp::guiEvent);
             
             break;
@@ -444,8 +487,8 @@ void ofApp::keyPressed(int key){
         //Nudge video forward
         case '.':
         {
-            vids[1].nextFrame();
-            vids[1].play();
+            vids[currentVid].nextFrame();
+            vids[currentVid].play();
             break;
         }
             
@@ -454,13 +497,13 @@ void ofApp::keyPressed(int key){
         {
             
             vidSpeed =  .01*(100*BPM/(bpmTapper.bpm()/2));
-            vids[1].setSpeed(vidSpeed);
+            vids[currentVid].setSpeed(vidSpeed);
             break;
         }
         case 'k':
         {
             vidSpeed =  .01*(100*BPM/(bpmTapper.bpm()*2));
-            vids[1].setSpeed(vidSpeed);
+            vids[currentVid].setSpeed(vidSpeed);
             break;
         }
 
@@ -468,7 +511,7 @@ void ofApp::keyPressed(int key){
         case 'r':
         {
             vidSpeed =-vidSpeed;
-            vids[1].setSpeed(vidSpeed);
+            vids[currentVid].setSpeed(vidSpeed);
             break;
         }
         default:

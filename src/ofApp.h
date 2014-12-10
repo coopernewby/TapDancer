@@ -25,7 +25,10 @@ public:
     float 	counter;
     
     //Number of video panels
-    ofVideoPlayer vids[2];
+    bool vidPanels = false;
+    bool vidFull = false;
+    int currentVid = 0;
+    ofVideoPlayer vids[4];
     float vidSpeed = 1;
 
     void audioRequested (float * output, int bufferSize, int nChannels);
@@ -53,21 +56,10 @@ public:
     void setGUI2();
     void setGUI3();
     
-    void setVID1();
-    void setVID2();
-    void setVID3();
-    void setVID4();
-
-    
     ofxUICanvas *gui;
     ofxUISuperCanvas *gui1;
     ofxUISuperCanvas *gui2;
     ofxUISuperCanvas *gui3;
-    
-    ofxUISuperCanvas *vid1;
-    ofxUISuperCanvas *vid2;
-    ofxUISuperCanvas *vid3;
-    ofxUISuperCanvas *vid4;
     
     
     ofxUITextInput *textInput;
@@ -89,7 +81,7 @@ public:
     int nBandsToGet;
     float 				* fftSmoothed;
     
-    msa::BPMTapper  bpmTapper;
+    msa::BPMTapper  bpmTapper[4];
     
     int newW;
     int newH;

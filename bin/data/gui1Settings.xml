@@ -2,11 +2,11 @@
     <Kind>40</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>733.000000000</XPosition>
-    <YPosition>256.000000000</YPosition>
+    <XPosition>639.000000000</XPosition>
+    <YPosition>266.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>31</Kind>
     <Name>NUDGE BACK</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
