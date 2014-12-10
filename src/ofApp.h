@@ -25,8 +25,7 @@ public:
     float 	counter;
     
     //Number of video panels
-    ofVideoPlayer vids;
-    ofVideoPlayer vid2;
+    ofVideoPlayer vids[2];
     float vidSpeed = 1;
 
     void audioRequested (float * output, int bufferSize, int nChannels);
@@ -53,12 +52,22 @@ public:
     void setGUI1();
     void setGUI2();
     void setGUI3();
+    
+    void setVID1();
+    void setVID2();
+    void setVID3();
+    void setVID4();
 
     
     ofxUICanvas *gui;
     ofxUISuperCanvas *gui1;
     ofxUISuperCanvas *gui2;
     ofxUISuperCanvas *gui3;
+    
+    ofxUISuperCanvas *vid1;
+    ofxUISuperCanvas *vid2;
+    ofxUISuperCanvas *vid3;
+    ofxUISuperCanvas *vid4;
     
     
     ofxUITextInput *textInput;
