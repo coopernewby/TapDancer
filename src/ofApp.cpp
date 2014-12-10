@@ -29,11 +29,13 @@ void ofApp::setup(){
     loop = false;
     newW=1024;
     newH=768;
+    img = new ofImage();
+    img->loadImage("ColorWheel.png");
     
     //BTNdim = ofGetWidth() / 5.0f;
     
     SAMPLE_RATE = 44100;
-    setBPM(120.0);//123
+    setBPM(122.0);//123
     pos = 0; // running sample count
     ofSoundStreamSetup(1,0,this); // sound stream initialised so samples can be counted
     
@@ -59,7 +61,7 @@ void ofApp::setup(){
     
     //Sound setup
     
-    bang.loadSound("sounds/cazzette-sleepless-hotel-garuda-thero-remix.mp3");
+    bang.loadSound("sounds/All I See (TCTS Remix).mp3");
     bang.setVolume(0.75f);
     bang.setMultiPlay(false);
     
@@ -96,14 +98,25 @@ void ofApp::setup(){
         // Get the full (nasty) URL of the raw video
         //string vid_url = ofSystemCall(command);
         //cout << vid_url << endl;
-        
-        string vid_url0 = "https://r11---sn-o097znel.googlevideo.com/videoplayback?ip=67.161.9.40&ms=au&mv=m&initcwndbps=2253750&ipbits=0&dur=376.465&id=o-AAdrZrA9Si8vlGiBvNAQBWan7k85S1mHKfZjgPf-vQPW&key=yt5&signature=1C45B030AC339B4ADBC81BC153FCC0F050C5FA4E.9CA6BA028DA1E4D6559DAB7DD42C4E1DD27FD6E6&mm=31&mt=1418206605&sver=3&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&upn=u1vxV68103g&requiressl=yes&source=youtube&itag=18&expire=1418228256&fexp=904849%2C907259%2C927622%2C931352%2C932404%2C936118%2C941004%2C943917%2C947209%2C948124%2C952302%2C952605%2C952901%2C953912%2C957103%2C957105%2C957201&ratebypass=yes";
-        
-        string vid_url1 = "https://r19---sn-nwj7kner.googlevideo.com/videoplayback?sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&key=yt5&fexp=907259%2C913430%2C916635%2C927622%2C932404%2C936118%2C943917%2C947209%2C948124%2C952005%2C952302%2C952605%2C952901%2C953912%2C955301%2C957103%2C957105%2C957201&expire=1418227564&upn=V8NxzIv25yA&ipbits=0&dur=161.935&signature=B33F37873AF08266214047E5352C7A36ECB7AE2B.247500948A7F5C128239F51996D9732425F83954&itag=18&source=youtube&ms=au&ip=67.161.9.40&mv=m&ratebypass=yes&mt=1418205885&requiressl=yes&id=o-ADdKpwdChRNRk9_pn-u8x91UfO2_FUIzxGCImJt8qM4c&sver=3&mm=31&initcwndbps=2228750";
+
     
-        string vid_url2 = "https://r19---sn-o097znel.googlevideo.com/videoplayback?requiressl=yes&ip=67.161.9.40&ms=au&mv=m&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&mt=1418205956&signature=A87A8491111A37D282558B6BC908A2BE0E7BCA8A.0939C7143352411F37E57447A7ED54817D0F9D6B&id=o-AO1oZnSYqid5u94DYnciYWom8x2fE7qfQAYjHDg4hfJV&mm=31&itag=18&initcwndbps=2217500&fexp=901496%2C907259%2C927622%2C929305%2C932404%2C935693%2C941004%2C943917%2C947209%2C947601%2C948124%2C952302%2C952605%2C952901%2C953912%2C957103%2C957105%2C957201&source=youtube&upn=O9voNnNjXJI&sver=3&dur=161.935&ipbits=0&key=yt5&expire=1418227614&ratebypass=yes";
-        
-        string vid_url3 = "https://r1---sn-o097znel.googlevideo.com/videoplayback?mv=m&pcm2=no&mt=1418206033&ms=au&source=youtube&expire=1418227691&sver=3&dur=85.124&key=yt5&requiressl=yes&mm=31&ratebypass=yes&itag=18&initcwndbps=2222500&upn=qOz1uPONQLc&id=o-ALW-E8Coxeut4lnWN71SyI0hgY08s82bMuceGImAt2jL&ip=67.161.9.40&fexp=905639%2C907259%2C917000%2C927622%2C932404%2C938644%2C941004%2C943915%2C943917%2C947209%2C948124%2C948207%2C952302%2C952605%2C952901%2C953912%2C955301%2C957103%2C957105%2C957201&signature=49F21DD21B3C5012CA9D8BE456740033C38928B4.90118FF562461EFF9CC9011C27F1B8AE158FE930&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cpcm2%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&ipbits=0";
+    //B&W VIDEO
+    string vid_url0 = "https://r9---sn-nwj7kned.googlevideo.com/videoplayback?key=yt5&id=o-AIgLpcJvssqf92tFzoo4R208vh6jEgnHbzHSwtgdCnfL&fexp=902904%2C907259%2C916631%2C927622%2C932404%2C935024%2C943917%2C947209%2C947228%2C948124%2C952302%2C952605%2C952901%2C953912%2C955105%2C955301%2C957103%2C957105%2C957201&ipbits=0&mm=31&mt=1418239353&initcwndbps=2222500&mime=video%2Fmp4&ip=2601%3A9%3A4980%3A920%3Aa9fa%3A52fc%3Abda3%3A2fb0&ms=au&mv=m&dur=77.577&source=youtube&signature=E053C1FB12ADC0A023D1EC4557C7E5A97DD06087.7F4D82CA388ADAF927624CADF3F3504DA1CF1F6E&ratebypass=yes&sver=3&requiressl=yes&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmime%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&upn=7F5XNGdoWdk&itag=18&expire=1418260988";
+    
+    string vid_url1 = "https://r19---sn-o097znel.googlevideo.com/videoplayback?signature=429E3294E2C7EBA05ED051BE32D88B0078F7EAA9.1B1E187F6242DDBC78271F40F5216E9056C2C2FC&ms=au&mv=m&source=youtube&ratebypass=yes&initcwndbps=2182500&dur=161.935&upn=EtiEWReFCEs&requiressl=yes&mm=31&key=yt5&expire=1418252800&mt=1418231140&id=o-ALkvmzKy3wUFyk2yACqilwMt-h4YFDoWrrvpxDu9Mmba&itag=18&fexp=907259%2C913440%2C913587%2C916631%2C927622%2C932404%2C936117%2C936932%2C938692%2C941004%2C943917%2C947209%2C948124%2C952302%2C952605%2C952901%2C953000%2C953912%2C955301%2C957103%2C957105%2C957201&ipbits=0&sver=3&ip=67.161.9.40&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire";
+    
+    string vid_url2 = "https://r11---sn-nwj7kner.googlevideo.com/videoplayback?id=o-AFRceS5doO22C7cpeLHB-vsY43-djyP5D_Dmn_jPP0Je&initcwndbps=2052500&key=yt5&dur=91.533&mt=1418231140&signature=E007FE48EADDFB3A9937704EA162693F039B90C1.ED422E213051958CE7E7A941A6B61695C39CFA48&ms=au&source=youtube&mv=m&sver=3&ipbits=0&mm=31&requiressl=yes&itag=18&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&ratebypass=yes&expire=1418252832&ip=67.161.9.40&upn=r9b8tkSJlZI&fexp=907259%2C922247%2C923349%2C924637%2C927622%2C932404%2C934947%2C942622%2C943917%2C947209%2C948124%2C952302%2C952605%2C952901%2C953912%2C957103%2C957105%2C957201";
+    
+    string vid_url3 = "https://r15---sn-o097znle.googlevideo.com/videoplayback?sver=3&expire=1418261458&dur=209.443&source=youtube&ms=au&mv=m&mt=1418239782&ratebypass=yes&mm=31&requiressl=yes&mime=video%2Fmp4&upn=dOC-V7a3dPI&id=o-AJy1nixO7HXNfuqngssW7ljhKN-TXvqmvR5Uaapu6WCq&initcwndbps=2246250&itag=18&ipbits=0&key=yt5&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmime%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&signature=CC36E621C325BBB139F82F598104826FD1EC7F02.E84FEB9F5847040E23D66B870F5E58EF9277EC05&fexp=901441%2C901802%2C907259%2C916943%2C927622%2C932404%2C937435%2C939109%2C941004%2C943917%2C947209%2C948124%2C952302%2C952605%2C952901%2C953912%2C955105%2C955301%2C957103%2C957105%2C957201&ip=67.161.9.40";
+    
+    //COLOR VIDEO
+//        string vid_url0 = "https://r11---sn-nwj7kner.googlevideo.com/videoplayback?fexp=900218%2C903903%2C907259%2C927622%2C931343%2C932404%2C940000%2C943917%2C947209%2C948124%2C949007%2C952302%2C952605%2C952901%2C953912%2C957103%2C957105%2C957201&mm=31&ip=67.161.9.40&dur=376.465&id=o-ADWw09b8h87ZUSrQ4rTKg5lEcORbHN_SBnl7DKyGI2s_&sver=3&key=yt5&ms=au&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&source=youtube&initcwndbps=2087500&mv=m&ratebypass=yes&itag=18&signature=1F1718E5FD36C6FC9B43634A23F0D6497CE7BC03.B7E9D40DFF23EB2A6DC39035356FC57AABB51F98&upn=hd2CKz-csos&requiressl=yes&mt=1418231050&expire=1418252746&ipbits=0";
+//        
+//        string vid_url1 = "https://r16---sn-nwj7knl7.googlevideo.com/videoplayback?source=youtube&signature=4D93D92D2B79C61D92C5F61B573E22A204EC1CF3.A463CE55247A418D9C0BAAC480C14CC449DADF6A&ip=2601%3A9%3A4980%3A920%3Aa9fa%3A52fc%3Abda3%3A2fb0&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Crequiressl%2Csource%2Cupn%2Cexpire&sver=3&requiressl=yes&id=o-AOy-VBUlbSNIHDr2Y4q5uF0ar5aeWUqzCQ-zd2mQu2Zz&initcwndbps=2250000&ipbits=0&mv=m&expire=1418260055&mm=31&itag=18&mt=1418238371&ms=au&fexp=907259%2C912328%2C913440%2C917000%2C927622%2C929305%2C932404%2C934045%2C936109%2C937236%2C939109%2C941004%2C943917%2C947209%2C948124%2C952302%2C952605%2C952901%2C953912%2C955301%2C957103%2C957105%2C957201&key=yt5&upn=aG7srP5MNnM&dur=182.671&ratebypass=yes";
+//    
+//        string vid_url2 = "https://r10---sn-o097znek.googlevideo.com/videoplayback?upn=qzC5KNv1t-8&mv=m&mt=1418239108&ms=au&fexp=907259%2C927622%2C932404%2C936117%2C943917%2C947209%2C948124%2C952302%2C952605%2C952901%2C953913%2C955301%2C957103%2C957105%2C957201&id=o-ABaEYolz_0PBrJEkN56lqoQxpqjfn3uR12BPCNoJgq_A&sver=3&ratebypass=yes&mm=31&ip=67.161.9.40&itag=18&dur=255.582&initcwndbps=2153750&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmime%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&source=youtube&requiressl=yes&expire=1418260738&mime=video%2Fmp4&key=yt5&ipbits=0&signature=8E5BBD1EC733CDE64A7AEFB2234BBF2E6A5000D2.39448D3CA0D7E4D039FD37E75846A8AA32C7CD24";
+//        
+//        string vid_url3 = "https://r1---sn-o097znee.googlevideo.com/videoplayback?mv=m&fexp=907259%2C927622%2C932404%2C938648%2C941427%2C942626%2C943917%2C947209%2C947601%2C948124%2C952302%2C952605%2C952901%2C953912%2C955301%2C957103%2C957105%2C957201&mt=1418231232&ms=au&id=o-ALUXpYWF8F1Cx8D5p6ECEiuA8fJFf4MgmrkAYRH0jc6C&expire=1418252927&signature=0B3A29546B436A8E19BDD1E050902F9F213CF6DD.F2B28A75E3DB1F7C1D6B9FF19800EEA20DC0094C&sver=3&ip=67.161.9.40&ipbits=0&ratebypass=yes&source=youtube&mm=31&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&upn=MKycpsO6784&itag=18&requiressl=yes&initcwndbps=2067500&key=yt5&dur=85.124";
     
         //Load the video (from a url!)
         vids[0].loadMovie(vid_url0);
@@ -172,10 +185,11 @@ void ofApp::audioRequested(float *output, int bufferSize, int numChannels) {
 //--------------------------------------------------------------
 void ofApp::update(){
     ofSoundUpdate();
-    bpmTapper.update();
+    
     //vids[1].update();
     for(int i=0; i<4; i++)
     {
+        bpmTapper[i].update();
         vids[i].update();
     }
     
@@ -183,26 +197,37 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofBackground(red, green, blue, 255);
+    ofBackground(50,50,50, 255);
     
     float widthDiv = ofGetWidth() / 3.0f;
     
     ofPushStyle();
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    ofSetColor(255,255,255);
-    ofDrawBitmapString("BPM: "+ofToString(BPM), 100, 110);
+    ofSetColor(red,green,blue);
     
     if (currentVid == 0){
-    vids[currentVid].draw((newW/2-newW/1.3/2), 20, newW/1.3, newH/1.3);
+        if(vidFull == true){
+            vids[currentVid].draw(0, 0, newW, newH);
+        }
+        else vids[currentVid].draw((newW/2-newW/1.3/2), 20, newW/1.3, newH/1.3);
     }
     if (currentVid == 1){
-        vids[currentVid].draw((newW/2-newW/1.3/2), 20, newW/1.3, newH/1.3);
+        if(vidFull == true){
+            vids[currentVid].draw(0, 0, newW, newH);
+        }
+        else vids[currentVid].draw((newW/2-newW/1.3/2), 20, newW/1.3, newH/1.3);
     }
     if (currentVid == 2){
-        vids[currentVid].draw((newW/2-newW/1.3/2), 20, newW/1.3, newH/1.3);
+        if(vidFull == true){
+            vids[currentVid].draw(0, 0, newW, newH);
+        }
+        else vids[currentVid].draw((newW/2-newW/1.3/2), 20, newW/1.3, newH/1.3);
     }
     if (currentVid == 3){
-        vids[currentVid].draw((newW/2-newW/1.3/2), 20, newW/1.3, newH/1.3);
+        if(vidFull == true){
+            vids[currentVid].draw(0, 0, newW, newH);
+        }
+        else vids[currentVid].draw((newW/2-newW/1.3/2), 20, newW/1.3, newH/1.3);
     }
     if (vidPanels == true){
     vids[0].draw(newW/2, 0, newW/2, newH/2);
@@ -211,12 +236,8 @@ void ofApp::draw(){
     vids[3].draw(newW/2,newH/2, newW/2, newH/2);
     }
 
-    
-    //ofDrawBitmapString("Pos: "+ofToString(pos), 100, 130);
-    //ofDrawBitmapString("Samples per beat: "+ofToString(lengthOfOneBeatInSamples), 100, 150);
     ofSetColor(0);
-    ofDrawBitmapString("Hit Spacebar to tap BPM", 50, 550);
-    ofDrawBitmapString("BPM: " + ofToString(bpmTapper.bpm()), 50, 500);
+    ofDrawBitmapString("BPM: " + ofToString(bpmTapper[currentVid].bpm()), 50, 560);
 
 
     
@@ -244,7 +265,7 @@ void ofApp::guiEvent(ofxUIEventArgs &e)
     }
     else if(name == "resetBPM")
     {
-        bpmTapper.startFresh();
+        bpmTapper[currentVid].startFresh();
     }
     //Toggles the loop mode on
     else if(name == "Loop")
@@ -254,11 +275,6 @@ void ofApp::guiEvent(ofxUIEventArgs &e)
         
     }
     //If the image toggles are initiated, the cue_________ sends a variable trigger to the audio requested funtion to trigger samples on the down beat. RIght now all samples are quarternote quantized
-    else if(name == "REWIND")
-    {
-        ofxUIImageToggle *toggle = (ofxUIImageToggle *) e.getToggle();
-        
-    }
     else if(name == "NUDGE BACK")
     {
         ofxUIImageToggle *toggle = (ofxUIImageToggle *) e.getToggle();
@@ -272,18 +288,10 @@ void ofApp::guiEvent(ofxUIEventArgs &e)
     else if(name == "PLAY")
     {
         ofxUIImageToggle *toggle = (ofxUIImageToggle *) e.getToggle();
-        cuebang=loopLength;
-    }
-    else if(name == "FFWD")
-    {
-        ofxUIImageToggle *toggle = (ofxUIImageToggle *) e.getToggle();
-        //cueskirt=loopLength;
-        
-    }
-    else if(name == "SEARCH")
-    {
-        ofxUIImageToggle *toggle = (ofxUIImageToggle *) e.getToggle();
-        
+        if(bang.getIsPlaying() == true){
+            ofSoundStopAll();
+        }
+        else cuebang=loopLength;
     }
     else if(name == "VIDPANEL")
     {
@@ -296,28 +304,70 @@ void ofApp::guiEvent(ofxUIEventArgs &e)
         ofxUIImageToggle *toggle = (ofxUIImageToggle *) e.getToggle();
         
     }
-    else if(name == "VOLUME")
+    else if(name == "EDM Trend Machine - Knife Party")
     {
-        ofxUIImageToggle *toggle = (ofxUIImageToggle *) e.getToggle();
-        
+        bang.loadSound("sounds/EDM Trend Machine.mp3");
+        setBPM(124.0);
+        bang.setVolume(0.75f);
+        bang.setMultiPlay(false);
     }
-    else if(name == "PAUSE")
+    else if(name == "Bang - EDX")
     {
-        ofxUIImageToggle *toggle = (ofxUIImageToggle *) e.getToggle();
-        
+        bang.loadSound("sounds/Bang Sandy Rivera.mp3");
+        setBPM(123.0);
+        bang.setVolume(0.75f);
+        bang.setMultiPlay(false);
     }
-    else if(name == "MATRIX2")
+    else if(name == "Drop That Skirt - Croatia Squad")
     {
-        ofxUIImageToggle *toggle = (ofxUIImageToggle *) e.getToggle();
-        
+        bang.loadSound("sounds/Drop_That_Skirt.mp3");
+        setBPM(121.0);
+        bang.setVolume(0.75f);
+        bang.setMultiPlay(false);
+    }
+    else if(name == "This Could Be Love - Borgeous")
+    {
+        bang.loadSound("sounds/borgeous-shaun-frank-this-could-be-love-feat-delaney-jane.mp3");
+        setBPM(126.0);
+        bang.setVolume(0.75f);
+        bang.setMultiPlay(false);
+    }
+    else if(name == "Milking - Croatia Squad")
+    {
+        bang.loadSound("sounds/Milking.mp3");
+        setBPM(122.0);
+        bang.setVolume(0.75f);
+        bang.setMultiPlay(false);
+    }
+    else if(name == "True - Nora En Pure")
+    {
+        bang.loadSound("sounds/True (Mark Lower Remix).mp3");
+        setBPM(122.0);
+        bang.setVolume(0.75f);
+        bang.setMultiPlay(false);
+    }
+    else if(name == "Sleepless - Cazzette")
+    {
+        bang.loadSound("sounds/cazzette-sleepless-hotel-garuda-thero-remix.mp3");
+        setBPM(120.0);
+        bang.setVolume(0.75f);
+        bang.setMultiPlay(false);
+    }
+    else if(name == "All I See - Bondax")
+    {
+        bang.loadSound("sounds/All I See (TCTS Remix).mp3");
+        setBPM(123.0);
+        bang.setVolume(0.75f);
+        bang.setMultiPlay(false);
+    }
+    else if(name == "Okay - Shiba San")
+    {
+        bang.loadSound("sounds/Okay.mp3");
+        setBPM(123.0);
+        bang.setVolume(0.75f);
+        bang.setMultiPlay(false);
     }
     
-    else if(name == "RADIO VERTICAL")
-    {
-        ofxUIRadio *radio = (ofxUIRadio *) e.widget;
-        cout << radio->getName() << " value: " << radio->getValue() << " active name: " << radio->getActiveName() << endl;
-    }
-
 }
 
 //--------------------------------------------------------------
@@ -412,7 +462,7 @@ void ofApp::keyPressed(int key){
             break;
             
         case 'h':
-            gui1->toggleVisible();
+            vidFull=!vidFull;
             gui2->toggleVisible();
             gui3->toggleVisible();
             break;
@@ -453,12 +503,18 @@ void ofApp::keyPressed(int key){
             break;
             
         case '1':
-            gui1->toggleVisible();
             vids[currentVid].getCurrentFrame();
             break;
             
         case '2':
-            gui2->toggleVisible();
+            vids[currentVid].getCurrentFrame();
+            break;
+            
+        case '3':
+            vids[currentVid].getCurrentFrame();
+            break;
+            
+        case '4':
             vids[currentVid].getCurrentFrame();
             break;
         case ' ':
@@ -496,13 +552,13 @@ void ofApp::keyPressed(int key){
         case 'l':
         {
             
-            vidSpeed =  .01*(100*BPM/(bpmTapper.bpm()/2));
+            vidSpeed =  .01*(100*BPM/(bpmTapper[currentVid].bpm()/2));
             vids[currentVid].setSpeed(vidSpeed);
             break;
         }
         case 'k':
         {
-            vidSpeed =  .01*(100*BPM/(bpmTapper.bpm()*2));
+            vidSpeed =  .01*(100*BPM/(bpmTapper[currentVid].bpm()*2));
             vids[currentVid].setSpeed(vidSpeed);
             break;
         }
@@ -511,7 +567,9 @@ void ofApp::keyPressed(int key){
         case 'r':
         {
             vidSpeed =-vidSpeed;
-            vids[currentVid].setSpeed(vidSpeed);
+            for(int all=0; all<4; all++){
+            vids[all].setSpeed(vidSpeed);
+            }
             break;
         }
         default:
@@ -524,7 +582,6 @@ void ofApp::setGUI1()
 {
     gui1 = new ofxUISuperCanvas("");
     gui1->setDrawBack(false);
-    gui1->addSpacer();
     gui1->setWidgetFontSize(OFX_UI_FONT_MEDIUM);
     gui1->addMultiImageToggle("NUDGE BACK", "GUI/tap.png", false , 389/2,135/2);
     
@@ -546,27 +603,24 @@ void ofApp::setGUI2()
     gui2 = new ofxUISuperCanvas("");
     
     textInput = gui2->addTextInput("TEXT INPUT", "Insert YouTube URL here");
-    BTNdim =  70;
+    BTNdim =  60;
     gui2->setGlobalButtonDimension(BTNdim);
-    gui2->addMultiImageToggle("REWIND", "GUI/Rwd.png", false);
-    gui2->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
     gui2->addMultiImageToggle("NUDGE BACK", "GUI/nudgeBk.png", false);
+    gui2->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
     gui2->addMultiImageToggle("NUDGE FORWARD", "GUI/nudgeFwd.png", false);
     gui2->addMultiImageToggle("PLAY", "GUI/Play.png", false);
-    gui2->addMultiImageToggle("FFWD", "GUI/FFwd.png", false);
     gui2->addMultiImageToggle("PAUSE", "GUI/pause.png", false);
-    gui2->addMultiImageToggle("VOLUME", "GUI/Volume.png", false);
     gui2->addMultiImageToggle("MUTE", "GUI/Mute.png", false);
     gui2->addMultiImageToggle("VIDPANEL", "GUI/vidPanel.png", false);
-    gui2->addMultiImageToggle("SEARCH", "GUI/Search.png", false);
     
     gui2->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     gui2->setGlobalButtonDimension(32);
     gui2->addButton("Stop", false)->setLabelVisible(true);
+    gui2->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
     gui2->addButton("resetBPM", false)->setLabelVisible(true);
     gui2->addToggle("Loop", false)->setLabelVisible(true);
     
-    gui2->setPosition(212*3,0);
+    gui2->setPosition(212*5,0);
     gui2->autoSizeToFitWidgets();
     
     ofAddListener(gui2->newGUIEvent,this,&ofApp::guiEvent);
@@ -576,35 +630,21 @@ void ofApp::setGUI3()
 {
     gui3 = new ofxUISuperCanvas("");
     gui3->setDrawBack(false);
-    gui3->addSpacer();
     gui3->setGlobalButtonDimension(24);
-    gui3->addLabel("Video Loop Matrix", OFX_UI_FONT_MEDIUM);
-    tm = gui3->addToggleMatrix("MATRIX2", 3, 6);
-    gui3->addToggleMatrix("MATRIX3", 1, 4);
-    
-    gui3->addSpacer();
     vector<string> items;
-    items.push_back("Bang - EDX"); items.push_back("EDM Trend Machine - Knife Party"); items.push_back("THIRD SONG");
-    items.push_back("FOURTH ITEM"); items.push_back("FIFTH ITEM"); items.push_back("SIXTH ITEM");
+    items.push_back("Bang - EDX"); items.push_back("EDM Trend Machine - Knife Party"); items.push_back("Okay - Shiba San");
+    items.push_back("All I See - Bondax"); items.push_back("This Could Be Love - Borgeous"); items.push_back("Milking - Croatia Squad"); items.push_back("Drop That Skirt - Croatia Squad");items.push_back("True - Nora En Pure");items.push_back("Sleepless - Cazzette");
     
-    vector<string> names;
-    names.push_back("RAD1");
-    names.push_back("RAD2");
-    names.push_back("RAD3");
-    
-    gui3->addSpacer();
+   
+    gui3->addLabel("Filter Color", OFX_UI_FONT_MEDIUM);
+    gui3->addImageSampler("SAMPLER", img);
     gui3->setWidgetFontSize(OFX_UI_FONT_MEDIUM);
-    ddl = gui3->addDropDownList("DROP DOWN LIST", items);
-    ddl->setAllowMultiple(true);
-    
+    ddl = gui3->addDropDownList("Select Song", items);
+    ddl->setAllowMultiple(false);
     gui3->setGlobalButtonDimension(OFX_UI_GLOBAL_BUTTON_DIMENSION);
     
     gui3->setPosition(212*2, 0);
     gui3->autoSizeToFitWidgets();
-    
-    gui3->addSpacer();
-    gui3->addRadio("RADIO HORIZONTAL", names, OFX_UI_ORIENTATION_HORIZONTAL);
-    gui3->addRadio("RADIO VERTICAL", names, OFX_UI_ORIENTATION_VERTICAL);
     
     
     ofAddListener(gui3->newGUIEvent,this,&ofApp::guiEvent);

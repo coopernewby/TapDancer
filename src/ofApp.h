@@ -86,6 +86,8 @@ public:
     int newW;
     int newH;
     
+    ofImage *img;
+    
 
 };
 

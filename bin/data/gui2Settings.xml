@@ -2,122 +2,22 @@
     <Kind>40</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>424.000000000</XPosition>
-    <YPosition>0.000000000</YPosition>
+    <XPosition>12.000000000</XPosition>
+    <YPosition>889.000000000</YPosition>
 </Canvas>
 <Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX2(0,0)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX2(1,0)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX2(2,0)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX2(3,0)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX2(4,0)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX2(5,0)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX2(0,1)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX2(1,1)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX2(2,1)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX2(3,1)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX2(4,1)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX2(5,1)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX2(0,2)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX2(1,2)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX2(2,2)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX2(3,2)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX2(4,2)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX2(5,2)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX3(0,0)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX3(1,0)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX3(2,0)</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>MATRIX3(3,0)</Name>
-    <Value>0</Value>
+    <Kind>28</Kind>
+    <Name>SAMPLER</Name>
+    <XValue>0.842364550</XValue>
+    <YValue>0.274641454</YValue>
+    <RColor>255</RColor>
+    <GColor>255</GColor>
+    <BColor>255</BColor>
+    <AColor>255</AColor>
 </Widget>
 <Widget>
     <Kind>22</Kind>
-    <Name>DROP DOWN LIST</Name>
+    <Name>Select Song</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -132,51 +32,36 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>THIRD SONG</Name>
+    <Name>Okay - Shiba San</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>FOURTH ITEM</Name>
+    <Name>All I See - Bondax</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>FIFTH ITEM</Name>
+    <Name>This Could Be Love - Borgeous</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>SIXTH ITEM</Name>
+    <Name>Milking - Croatia Squad</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>2</Kind>
-    <Name>RAD1</Name>
+    <Kind>17</Kind>
+    <Name>Drop That Skirt - Croatia Squad</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>2</Kind>
-    <Name>RAD2</Name>
+    <Kind>17</Kind>
+    <Name>True - Nora En Pure</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
-    <Kind>2</Kind>
-    <Name>RAD3</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>RAD1</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>RAD2</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>RAD3</Name>
+    <Kind>17</Kind>
+    <Name>Sleepless - Cazzette</Name>
     <Value>0</Value>
 </Widget>
