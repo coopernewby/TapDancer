@@ -1,10 +1,10 @@
 #include "ofApp.h"
 
-string ofSystemCall(string command)
+string getYoutubeDlStream(string _link) //_link is the complete url, just like above.
 {
-    cerr << "here" << endl;
+    string command =  "/usr/local/bin/youtube-dl --get-url --format 18 " + _link; //youtube_dl is my local path to the youtube-dl executable.
+    
     FILE* pipe = popen(command.c_str(), "r");
-    cerr << "through the pipe" << endl;
     if (!pipe) return "ERROR";
     char buffer[128];
     string result = "";
@@ -14,7 +14,13 @@ string ofSystemCall(string command)
     }
     pclose(pipe);
     result.erase(remove(result.begin(), result.end(), '\n'), result.end());
-    return result;
+    string dlStream = result;
+    
+    ofLogNotice(command + "---> " + dlStream); // Check result
+    
+    bool success = (ofIsStringInString(dlStream, "http://") || ofIsStringInString(dlStream, "https://"));
+    
+    return ( success? dlStream : ""); // return valid URL when found, else return empty string.
 }
 
 
@@ -70,8 +76,6 @@ void ofApp::setup(){
 //    skirt.setMultiPlay(false);
     
     
-    
-    string youtube_dl = ofToDataPath("youtube-dl", true);
     // Open a Youtube video feed
     // http://code.google.com/apis/youtube/2.0/developers_guide_protocol_video_feeds.html
     // http://gdata.youtube.com/feeds/api/standardfeeds/most_popular?v=2&alt=json
@@ -87,36 +91,10 @@ void ofApp::setup(){
         // We want the first href string inside the link item
         //string youtube_url = youtube["feed"]["entry"][i]["link"][UInt(0)]["href"].asString();
         //cout << youtube_url << endl;
-        
-        string youtube_url = "https://www.youtube.com/watch?v=dSAOV6XEjXA";
-        
-        // Assemble a command just like the one you would use on the command line
-        // Format 18 = H264  (see http://en.wikipedia.org/wiki/YouTube#Quality_and_codecs)
-        string command = youtube_dl+" --get-url --format 18 "+youtube_url;
-        //cout << command << endl;
-        
-        // Get the full (nasty) URL of the raw video
-        //string vid_url = ofSystemCall(command);
-        //cout << vid_url << endl;
-
-    
-    //B&W VIDEO
-    string vid_url0 = "https://r9---sn-nwj7kned.googlevideo.com/videoplayback?key=yt5&id=o-AIgLpcJvssqf92tFzoo4R208vh6jEgnHbzHSwtgdCnfL&fexp=902904%2C907259%2C916631%2C927622%2C932404%2C935024%2C943917%2C947209%2C947228%2C948124%2C952302%2C952605%2C952901%2C953912%2C955105%2C955301%2C957103%2C957105%2C957201&ipbits=0&mm=31&mt=1418239353&initcwndbps=2222500&mime=video%2Fmp4&ip=2601%3A9%3A4980%3A920%3Aa9fa%3A52fc%3Abda3%3A2fb0&ms=au&mv=m&dur=77.577&source=youtube&signature=E053C1FB12ADC0A023D1EC4557C7E5A97DD06087.7F4D82CA388ADAF927624CADF3F3504DA1CF1F6E&ratebypass=yes&sver=3&requiressl=yes&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmime%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&upn=7F5XNGdoWdk&itag=18&expire=1418260988";
-    
-    string vid_url1 = "https://r19---sn-o097znel.googlevideo.com/videoplayback?signature=429E3294E2C7EBA05ED051BE32D88B0078F7EAA9.1B1E187F6242DDBC78271F40F5216E9056C2C2FC&ms=au&mv=m&source=youtube&ratebypass=yes&initcwndbps=2182500&dur=161.935&upn=EtiEWReFCEs&requiressl=yes&mm=31&key=yt5&expire=1418252800&mt=1418231140&id=o-ALkvmzKy3wUFyk2yACqilwMt-h4YFDoWrrvpxDu9Mmba&itag=18&fexp=907259%2C913440%2C913587%2C916631%2C927622%2C932404%2C936117%2C936932%2C938692%2C941004%2C943917%2C947209%2C948124%2C952302%2C952605%2C952901%2C953000%2C953912%2C955301%2C957103%2C957105%2C957201&ipbits=0&sver=3&ip=67.161.9.40&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire";
-    
-    string vid_url2 = "https://r11---sn-nwj7kner.googlevideo.com/videoplayback?id=o-AFRceS5doO22C7cpeLHB-vsY43-djyP5D_Dmn_jPP0Je&initcwndbps=2052500&key=yt5&dur=91.533&mt=1418231140&signature=E007FE48EADDFB3A9937704EA162693F039B90C1.ED422E213051958CE7E7A941A6B61695C39CFA48&ms=au&source=youtube&mv=m&sver=3&ipbits=0&mm=31&requiressl=yes&itag=18&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&ratebypass=yes&expire=1418252832&ip=67.161.9.40&upn=r9b8tkSJlZI&fexp=907259%2C922247%2C923349%2C924637%2C927622%2C932404%2C934947%2C942622%2C943917%2C947209%2C948124%2C952302%2C952605%2C952901%2C953912%2C957103%2C957105%2C957201";
-    
-    string vid_url3 = "https://r15---sn-o097znle.googlevideo.com/videoplayback?sver=3&expire=1418261458&dur=209.443&source=youtube&ms=au&mv=m&mt=1418239782&ratebypass=yes&mm=31&requiressl=yes&mime=video%2Fmp4&upn=dOC-V7a3dPI&id=o-AJy1nixO7HXNfuqngssW7ljhKN-TXvqmvR5Uaapu6WCq&initcwndbps=2246250&itag=18&ipbits=0&key=yt5&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmime%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&signature=CC36E621C325BBB139F82F598104826FD1EC7F02.E84FEB9F5847040E23D66B870F5E58EF9277EC05&fexp=901441%2C901802%2C907259%2C916943%2C927622%2C932404%2C937435%2C939109%2C941004%2C943917%2C947209%2C948124%2C952302%2C952605%2C952901%2C953912%2C955105%2C955301%2C957103%2C957105%2C957201&ip=67.161.9.40";
-    
-    //COLOR VIDEO
-//        string vid_url0 = "https://r11---sn-nwj7kner.googlevideo.com/videoplayback?fexp=900218%2C903903%2C907259%2C927622%2C931343%2C932404%2C940000%2C943917%2C947209%2C948124%2C949007%2C952302%2C952605%2C952901%2C953912%2C957103%2C957105%2C957201&mm=31&ip=67.161.9.40&dur=376.465&id=o-ADWw09b8h87ZUSrQ4rTKg5lEcORbHN_SBnl7DKyGI2s_&sver=3&key=yt5&ms=au&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&source=youtube&initcwndbps=2087500&mv=m&ratebypass=yes&itag=18&signature=1F1718E5FD36C6FC9B43634A23F0D6497CE7BC03.B7E9D40DFF23EB2A6DC39035356FC57AABB51F98&upn=hd2CKz-csos&requiressl=yes&mt=1418231050&expire=1418252746&ipbits=0";
-//        
-//        string vid_url1 = "https://r16---sn-nwj7knl7.googlevideo.com/videoplayback?source=youtube&signature=4D93D92D2B79C61D92C5F61B573E22A204EC1CF3.A463CE55247A418D9C0BAAC480C14CC449DADF6A&ip=2601%3A9%3A4980%3A920%3Aa9fa%3A52fc%3Abda3%3A2fb0&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Crequiressl%2Csource%2Cupn%2Cexpire&sver=3&requiressl=yes&id=o-AOy-VBUlbSNIHDr2Y4q5uF0ar5aeWUqzCQ-zd2mQu2Zz&initcwndbps=2250000&ipbits=0&mv=m&expire=1418260055&mm=31&itag=18&mt=1418238371&ms=au&fexp=907259%2C912328%2C913440%2C917000%2C927622%2C929305%2C932404%2C934045%2C936109%2C937236%2C939109%2C941004%2C943917%2C947209%2C948124%2C952302%2C952605%2C952901%2C953912%2C955301%2C957103%2C957105%2C957201&key=yt5&upn=aG7srP5MNnM&dur=182.671&ratebypass=yes";
-//    
-//        string vid_url2 = "https://r10---sn-o097znek.googlevideo.com/videoplayback?upn=qzC5KNv1t-8&mv=m&mt=1418239108&ms=au&fexp=907259%2C927622%2C932404%2C936117%2C943917%2C947209%2C948124%2C952302%2C952605%2C952901%2C953913%2C955301%2C957103%2C957105%2C957201&id=o-ABaEYolz_0PBrJEkN56lqoQxpqjfn3uR12BPCNoJgq_A&sver=3&ratebypass=yes&mm=31&ip=67.161.9.40&itag=18&dur=255.582&initcwndbps=2153750&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmime%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&source=youtube&requiressl=yes&expire=1418260738&mime=video%2Fmp4&key=yt5&ipbits=0&signature=8E5BBD1EC733CDE64A7AEFB2234BBF2E6A5000D2.39448D3CA0D7E4D039FD37E75846A8AA32C7CD24";
-//        
-//        string vid_url3 = "https://r1---sn-o097znee.googlevideo.com/videoplayback?mv=m&fexp=907259%2C927622%2C932404%2C938648%2C941427%2C942626%2C943917%2C947209%2C947601%2C948124%2C952302%2C952605%2C952901%2C953912%2C955301%2C957103%2C957105%2C957201&mt=1418231232&ms=au&id=o-ALUXpYWF8F1Cx8D5p6ECEiuA8fJFf4MgmrkAYRH0jc6C&expire=1418252927&signature=0B3A29546B436A8E19BDD1E050902F9F213CF6DD.F2B28A75E3DB1F7C1D6B9FF19800EEA20DC0094C&sver=3&ip=67.161.9.40&ipbits=0&ratebypass=yes&source=youtube&mm=31&sparams=dur%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Cmm%2Cms%2Cmv%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&upn=MKycpsO6784&itag=18&requiressl=yes&initcwndbps=2067500&key=yt5&dur=85.124";
+        string vid_url0 = getYoutubeDlStream("https://www.youtube.com/watch?v=yxGIHwpbKFU");
+        string vid_url1 = getYoutubeDlStream("https://www.youtube.com/watch?v=qXbP4JBf8To");
+        string vid_url2 = getYoutubeDlStream("https://www.youtube.com/watch?v=rw_M-ai1I0k");
+        string vid_url3 = getYoutubeDlStream("https://www.youtube.com/watch?v=5P-TXxoWTSE");
     
         //Load the video (from a url!)
         vids[0].loadMovie(vid_url0);
@@ -549,19 +527,19 @@ void ofApp::keyPressed(int key){
         }
             
         //double speed
-        case 'l':
-        {
-            
-            vidSpeed =  .01*(100*BPM/(bpmTapper[currentVid].bpm()/2));
-            vids[currentVid].setSpeed(vidSpeed);
-            break;
-        }
-        case 'k':
-        {
-            vidSpeed =  .01*(100*BPM/(bpmTapper[currentVid].bpm()*2));
-            vids[currentVid].setSpeed(vidSpeed);
-            break;
-        }
+//        case 'l':
+//        {
+//            
+//            vidSpeed =  .01*(100*BPM/(bpmTapper[currentVid].bpm()/2));
+//            vids[currentVid].setSpeed(vidSpeed);
+//            break;
+//        }
+//        case 'k':
+//        {
+//            vidSpeed =  .01*(100*BPM/(bpmTapper[currentVid].bpm()*2));
+//            vids[currentVid].setSpeed(vidSpeed);
+//            break;
+//        }
 
         //reverse clip
         case 'r':

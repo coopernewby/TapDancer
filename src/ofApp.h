@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxUI.h"
-#include "ofxJSONElement.h"
+
 #include "MSABPMTapper.h"
 
 class ofApp : public ofBaseApp{

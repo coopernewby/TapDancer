@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>60D09B03-56AC-4E0D-A28F-10AD5138A751</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TapDancer</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F1D3B36A578C756633120D1C26007BB96FFA0D3F</key>
+		<string>https://github.com/coopernewby/OldTime-Backup.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TapDancer.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F1D3B36A578C756633120D1C26007BB96FFA0D3F</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/coopernewby/OldTime-Backup.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F1D3B36A578C756633120D1C26007BB96FFA0D3F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F1D3B36A578C756633120D1C26007BB96FFA0D3F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>OldTime%20Backup</string>
+		</dict>
+	</array>
+</dict>
+</plist>

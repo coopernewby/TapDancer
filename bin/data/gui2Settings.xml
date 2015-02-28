@@ -2,14 +2,14 @@
     <Kind>40</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>12.000000000</XPosition>
-    <YPosition>889.000000000</YPosition>
+    <XPosition>424.000000000</XPosition>
+    <YPosition>0.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>28</Kind>
     <Name>SAMPLER</Name>
-    <XValue>0.842364550</XValue>
-    <YValue>0.274641454</YValue>
+    <XValue>0.832512319</XValue>
+    <YValue>0.176555216</YValue>
     <RColor>255</RColor>
     <GColor>255</GColor>
     <BColor>255</BColor>
