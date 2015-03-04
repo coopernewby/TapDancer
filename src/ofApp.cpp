@@ -96,6 +96,17 @@ void ofApp::setup(){
         string vid_url2 = getYoutubeDlStream("https://www.youtube.com/watch?v=rw_M-ai1I0k");
         string vid_url3 = getYoutubeDlStream("https://www.youtube.com/watch?v=5P-TXxoWTSE");
     
+//    string vid_url0 = getYoutubeDlStream("https://www.youtube.com/watch?v=8S3Yt-NxY0E");
+//    string vid_url1 = getYoutubeDlStream("https://www.youtube.com/watch?v=WwKFALb6Vw8");
+//    string vid_url2 = getYoutubeDlStream("https://www.youtube.com/watch?v=OeE1amkKuBU");
+//    string vid_url3 = getYoutubeDlStream("https://www.youtube.com/watch?v=ahoJReiCaPk");
+    
+//    string vid_url0 = getYoutubeDlStream("https://www.youtube.com/watch?v=8S3Yt-NxY0E");
+//    string vid_url1 = getYoutubeDlStream("https://www.youtube.com/watch?v=WwKFALb6Vw8");
+//    string vid_url2 = getYoutubeDlStream("https://www.youtube.com/watch?v=OeE1amkKuBU");
+//    string vid_url3 = getYoutubeDlStream("https://www.youtube.com/watch?v=ahoJReiCaPk");
+    
+    
         //Load the video (from a url!)
         vids[0].loadMovie(vid_url0);
         vids[1].loadMovie(vid_url1);

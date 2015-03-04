@@ -8,8 +8,8 @@
 <Widget>
     <Kind>28</Kind>
     <Name>SAMPLER</Name>
-    <XValue>0.832512319</XValue>
-    <YValue>0.176555216</YValue>
+    <XValue>0.866995096</XValue>
+    <YValue>0.353110433</YValue>
     <RColor>255</RColor>
     <GColor>255</GColor>
     <BColor>255</BColor>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>22</Kind>
     <Name>Select Song</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
@@ -58,7 +58,7 @@
 <Widget>
     <Kind>17</Kind>
     <Name>True - Nora En Pure</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
