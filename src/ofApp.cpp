@@ -1,5 +1,6 @@
 #include "ofApp.h"
 
+
 string getYoutubeDlStream(string _link) //_link is the complete url, just like above.
 {
     string command =  "/usr/local/bin/youtube-dl --get-url --format 18 " + _link; //youtube_dl is my local path to the youtube-dl executable.
@@ -27,8 +28,6 @@ string getYoutubeDlStream(string _link) //_link is the complete url, just like a
 //--------------------------------------------------------------
 void ofApp::setup(){
     
-    //Background color
-    red = 40; blue = 40; green = 40;
     hideGUI = false;
     bdrawPadding = false;
     //loop off at init
@@ -36,7 +35,6 @@ void ofApp::setup(){
     newW=1024;
     newH=768;
     img = new ofImage();
-    img->loadImage("ColorWheel.png");
     
     //BTNdim = ofGetWidth() / 5.0f;
     
@@ -59,11 +57,9 @@ void ofApp::setup(){
 
     setGUI1();
     setGUI2();
-    setGUI3();
     
-    gui1->loadSettings("gui1Settings.xml");
-    gui2->loadSettings("gui2Settings.xml");
-    gui2->loadSettings("gui3Settings.xml");
+    //gui1->loadSettings("gui1Settings.xml");
+    //gui2->loadSettings("gui2Settings.xml");
     
     //Sound setup
     
@@ -91,20 +87,41 @@ void ofApp::setup(){
         // We want the first href string inside the link item
         //string youtube_url = youtube["feed"]["entry"][i]["link"][UInt(0)]["href"].asString();
         //cout << youtube_url << endl;
-        string vid_url0 = getYoutubeDlStream("https://www.youtube.com/watch?v=yxGIHwpbKFU");
-        string vid_url1 = getYoutubeDlStream("https://www.youtube.com/watch?v=qXbP4JBf8To");
-        string vid_url2 = getYoutubeDlStream("https://www.youtube.com/watch?v=rw_M-ai1I0k");
-        string vid_url3 = getYoutubeDlStream("https://www.youtube.com/watch?v=5P-TXxoWTSE");
     
+
+    
+    
+//        string vid_url0 = getYoutubeDlStream("https://www.youtube.com/watch?v=yxGIHwpbKFU");
+//        string vid_url1 = getYoutubeDlStream("https://www.youtube.com/watch?v=qXbP4JBf8To");
+//        string vid_url2 = getYoutubeDlStream("https://www.youtube.com/watch?v=rw_M-ai1I0k");
+//        string vid_url3 = getYoutubeDlStream("https://www.youtube.com/watch?v=5P-TXxoWTSE");
+    //B&W
 //    string vid_url0 = getYoutubeDlStream("https://www.youtube.com/watch?v=8S3Yt-NxY0E");
 //    string vid_url1 = getYoutubeDlStream("https://www.youtube.com/watch?v=WwKFALb6Vw8");
 //    string vid_url2 = getYoutubeDlStream("https://www.youtube.com/watch?v=OeE1amkKuBU");
 //    string vid_url3 = getYoutubeDlStream("https://www.youtube.com/watch?v=ahoJReiCaPk");
+
     
-//    string vid_url0 = getYoutubeDlStream("https://www.youtube.com/watch?v=8S3Yt-NxY0E");
-//    string vid_url1 = getYoutubeDlStream("https://www.youtube.com/watch?v=WwKFALb6Vw8");
-//    string vid_url2 = getYoutubeDlStream("https://www.youtube.com/watch?v=OeE1amkKuBU");
-//    string vid_url3 = getYoutubeDlStream("https://www.youtube.com/watch?v=ahoJReiCaPk");
+        //90's 80's
+    string url0 = "https://www.youtube.com/watch?v=fA_r88JVAKE";
+    string url1 = "https://www.youtube.com/watch?v=otCpCn0l4Wo";
+    string url2 = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    string url3 = "https://www.youtube.com/watch?v=WW659rsCYGQ";
+    
+
+    string vid_url0 = getYoutubeDlStream(url0);
+    string vid_url1 = getYoutubeDlStream(url1);
+    string vid_url2 = getYoutubeDlStream(url2);
+    string vid_url3 = getYoutubeDlStream(url3);
+    //https://www.youtube.com/watch?v=okvRdTYWkDI
+    //https://www.youtube.com/watch?v=7RiJtODykRQ
+  //https://www.youtube.com/watch?v=1E9IU1fO89U
+    //https://www.youtube.com/watch?v=WW659rsCYGQ
+//Disco
+//    string vid_url0 = getYoutubeDlStream("https://www.youtube.com/watch?v=9EcjWd-O4jI");
+//    string vid_url1 = getYoutubeDlStream("https://www.youtube.com/watch?v=qkc8YduPnOM");
+//    string vid_url2 = getYoutubeDlStream("https://www.youtube.com/watch?v=glM0XaGhYl8");
+//    string vid_url3 = getYoutubeDlStream("https://www.youtube.com/watch?v=FX5HcB4cCzU");
     
     
         //Load the video (from a url!)
@@ -192,7 +209,6 @@ void ofApp::draw(){
     
     ofPushStyle();
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    ofSetColor(red,green,blue);
     
     if (currentVid == 0){
         if(vidFull == true){
@@ -225,7 +241,7 @@ void ofApp::draw(){
     vids[3].draw(newW/2,newH/2, newW/2, newH/2);
     }
 
-    ofSetColor(0);
+    //ofSetColor(0);
     ofDrawBitmapString("BPM: " + ofToString(bpmTapper[currentVid].bpm()), 50, 560);
 
 
@@ -238,16 +254,8 @@ void ofApp::guiEvent(ofxUIEventArgs &e)
     int kind = e.getKind();
     cout << "got event from: " << name << endl;
     
-    if(name == "SAMPLER")
-    {
-        ofxUIImageSampler *is = (ofxUIImageSampler *) e.widget;
-        ofColor clr = is->getColor();
-        red = clr.r;
-        blue = clr.b;
-        green = clr.g;
-    }
     //Stops all songs and audio streams if things get crazy
-    else if(name == "Stop")
+    if(name == "Stop")
     {
         ofxUIButton *button = (ofxUIButton *) e.getButton();
         ofSoundStopAll();
@@ -364,12 +372,24 @@ void ofApp::exit()
 {
     gui1->saveSettings("gui1Settings.xml");
     gui2->saveSettings("gui2Settings.xml");
-    gui3->saveSettings("gui2Settings.xml");
     
+    
+
+    ofxXmlSettings *XML = new ofxXmlSettings();
+        //int len = widgetsWithState.size();
+        for(int i = 0; i < 4; ++i) {
+            int index = XML->addTag("Widget");
+            if(XML->pushTag("Widget", index)) {
+                XML->setValue("URL", "url", 0);
+                XML->setValue("BPM", bpmTapper[i].bpm(), 0);
+            }
+            XML->popTag();
+        }
+        XML->saveFile("sounds/videoMeta.xml");
+    delete XML;
 
     delete gui1;
     delete gui2;
-    delete gui3;
     delete[] buffer;
 }
 
@@ -453,7 +473,6 @@ void ofApp::keyPressed(int key){
         case 'h':
             vidFull=!vidFull;
             gui2->toggleVisible();
-            gui3->toggleVisible();
             break;
             
         case 'P':
@@ -470,7 +489,7 @@ void ofApp::keyPressed(int key){
             break;
         
         case OF_KEY_RIGHT:
-            if(currentVid<4){
+            if(currentVid<3){
             currentVid++;
             }
             else currentVid = 0;
@@ -555,10 +574,7 @@ void ofApp::keyPressed(int key){
         //reverse clip
         case 'r':
         {
-            vidSpeed =-vidSpeed;
-            for(int all=0; all<4; all++){
-            vids[all].setSpeed(vidSpeed);
-            }
+            vids[currentVid].setSpeed(-vidSpeed);
             break;
         }
         default:
@@ -594,6 +610,10 @@ void ofApp::setGUI2()
     textInput = gui2->addTextInput("TEXT INPUT", "Insert YouTube URL here");
     BTNdim =  60;
     gui2->setGlobalButtonDimension(BTNdim);
+        vector<string> items;
+        items.push_back("Bang - EDX"); items.push_back("EDM Trend Machine - Knife Party"); items.push_back("Okay - Shiba San");
+        items.push_back("All I See - Bondax"); items.push_back("This Could Be Love - Borgeous"); items.push_back("Milking - Croatia Squad"); items.push_back("Drop That Skirt - Croatia Squad");items.push_back("True - Nora En Pure");items.push_back("Sleepless - Cazzette");
+    
     gui2->addMultiImageToggle("NUDGE BACK", "GUI/nudgeBk.png", false);
     gui2->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
     gui2->addMultiImageToggle("NUDGE FORWARD", "GUI/nudgeFwd.png", false);
@@ -608,6 +628,10 @@ void ofApp::setGUI2()
     gui2->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
     gui2->addButton("resetBPM", false)->setLabelVisible(true);
     gui2->addToggle("Loop", false)->setLabelVisible(true);
+    gui2->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    ddl = gui2->addDropDownList("Select Song", items);
+    ddl->setAllowMultiple(false);
+
     
     gui2->setPosition(212*5,0);
     gui2->autoSizeToFitWidgets();
@@ -615,32 +639,32 @@ void ofApp::setGUI2()
     ofAddListener(gui2->newGUIEvent,this,&ofApp::guiEvent);
 }
 
-void ofApp::setGUI3()
-{
-    gui3 = new ofxUISuperCanvas("");
-    gui3->setDrawBack(false);
-    gui3->setGlobalButtonDimension(24);
-    vector<string> items;
-    items.push_back("Bang - EDX"); items.push_back("EDM Trend Machine - Knife Party"); items.push_back("Okay - Shiba San");
-    items.push_back("All I See - Bondax"); items.push_back("This Could Be Love - Borgeous"); items.push_back("Milking - Croatia Squad"); items.push_back("Drop That Skirt - Croatia Squad");items.push_back("True - Nora En Pure");items.push_back("Sleepless - Cazzette");
-    
-   
-    gui3->addLabel("Filter Color", OFX_UI_FONT_MEDIUM);
-    gui3->addImageSampler("SAMPLER", img);
-    gui3->setWidgetFontSize(OFX_UI_FONT_MEDIUM);
-    ddl = gui3->addDropDownList("Select Song", items);
-    ddl->setAllowMultiple(false);
-    gui3->setGlobalButtonDimension(OFX_UI_GLOBAL_BUTTON_DIMENSION);
-    
-    gui3->setPosition(212*2, 0);
-    gui3->autoSizeToFitWidgets();
-    
-    
-    ofAddListener(gui3->newGUIEvent,this,&ofApp::guiEvent);
-
-    
-    
-}
+//void ofApp::setGUI3()
+//{
+//    gui3 = new ofxUISuperCanvas("");
+//    gui3->setDrawBack(false);
+//    gui3->setGlobalButtonDimension(24);
+//    vector<string> items;
+//    items.push_back("Bang - EDX"); items.push_back("EDM Trend Machine - Knife Party"); items.push_back("Okay - Shiba San");
+//    items.push_back("All I See - Bondax"); items.push_back("This Could Be Love - Borgeous"); items.push_back("Milking - Croatia Squad"); items.push_back("Drop That Skirt - Croatia Squad");items.push_back("True - Nora En Pure");items.push_back("Sleepless - Cazzette");
+//    
+//   
+//    gui3->addLabel("Filter Color", OFX_UI_FONT_MEDIUM);
+//    gui3->addImageSampler("SAMPLER", img);
+//    gui3->setWidgetFontSize(OFX_UI_FONT_MEDIUM);
+//    ddl = gui3->addDropDownList("Select Song", items);
+//    ddl->setAllowMultiple(false);
+//    gui3->setGlobalButtonDimension(OFX_UI_GLOBAL_BUTTON_DIMENSION);
+//    
+//    gui3->setPosition(212*2, 0);
+//    gui3->autoSizeToFitWidgets();
+//    
+//    
+//    ofAddListener(gui3->newGUIEvent,this,&ofApp::guiEvent);
+//
+//    
+//    
+//}
 
 
 //--------------------------------------------------------------

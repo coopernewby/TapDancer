@@ -54,12 +54,10 @@ public:
     //sets GUI and draggable super canvas
     void setGUI1();
     void setGUI2();
-    void setGUI3();
     
     ofxUICanvas *gui;
     ofxUISuperCanvas *gui1;
     ofxUISuperCanvas *gui2;
-    ofxUISuperCanvas *gui3;
     
     
     ofxUITextInput *textInput;
@@ -67,7 +65,6 @@ public:
     bool hideGUI;
     
     
-    float red, green, blue;
     bool bdrawPadding;
     
     void guiEvent(ofxUIEventArgs &e);
@@ -87,6 +84,10 @@ public:
     int newH;
     
     ofImage *img;
+    
+    
+    
+
     
 
 };
