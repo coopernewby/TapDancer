@@ -1,5 +1,68 @@
 #include "ofApp.h"
 
+//        string vid_url0 = getYoutubeDlStream("https://www.youtube.com/watch?v=yxGIHwpbKFU");
+//        string vid_url1 = getYoutubeDlStream("https://www.youtube.com/watch?v=qXbP4JBf8To");
+//        string vid_url2 = getYoutubeDlStream("https://www.youtube.com/watch?v=rw_M-ai1I0k");
+//        string vid_url3 = getYoutubeDlStream("https://www.youtube.com/watch?v=5P-TXxoWTSE");
+//B&W
+//string url0 =("https://www.youtube.com/watch?v=ahoJReiCaPk");
+//string url1 =("https://www.youtube.com/watch?v=OeE1amkKuBU");
+//string url2 =("https://www.youtube.com/watch?v=WwKFALb6Vw8");
+//string url3 =("https://www.youtube.com/watch?v=8S3Yt-NxY0E");
+
+//1920s ryan gosling James brown
+
+
+string url0 =("https://www.youtube.com/watch?v=jTR6xBeC2xA");
+//string url1 =("https://www.youtube.com/watch?v=i_ENjos_PpE");
+string url2 =("https://www.youtube.com/watch?v=NGFRG09sHag");
+string url3 =("https://www.youtube.com/watch?v=Zdz88MBWomo");
+
+
+////90's 80's
+//    string url0 = "https://www.youtube.com/watch?v=fA_r88JVAKE";
+//    string url1 = "https://www.youtube.com/watch?v=otCpCn0l4Wo";
+//    string url2 = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+//    string url3 = "https://www.youtube.com/watch?v=WW659rsCYGQ";
+
+//Funny
+//    string url0 = "https://www.youtube.com/watch?v=3eRBFkxgG7g";
+//    string url1 = "https://www.youtube.com/watch?v=IxPbgnO81sQ";
+//    string url2 = "https://www.youtube.com/watch?v=jQM32a6JqJo";
+//    string url3 = "https://www.youtube.com/watch?v=YPhXZQFBeEE";
+
+
+//    string url0 = "https://www.youtube.com/watch?v=aD1euxkzE9I";
+//    string url1 = "https://www.youtube.com/watch?v=v2Zbs56AKYs";
+//    string url2 = "https://www.youtube.com/watch?v=gx-NLPH8JeM";
+//    string url3 = "https://www.youtube.com/watch?v=E8pja8RGvYc";
+
+//Rave
+//string url0 = "https://www.youtube.com/watch?v=JqYhuwu614Y";
+//string url1 = "https://www.youtube.com/watch?v=hWJFfnHNOWI";
+//string url2 = "https://www.youtube.com/watch?v=Wq00WtzbcDU";
+//string url3 = "https://www.youtube.com/watch?v=5L1tr0PIx20";
+
+//Twist + ELvis
+//string url0 = "https://www.youtube.com/watch?v=im9XuJJXylw";
+//string url1 = "https://www.youtube.com/watch?v=MggQSspSGU8";
+//string url2 = "https://www.youtube.com/watch?v=qka6JrKUM5U";
+//string url3 = "https://www.youtube.com/watch?v=uEsXC1X9u50";
+
+//JitterBug
+//string url0 = "https://www.youtube.com/watch?v=SXHxxj1oBeI";
+//string url1 = "https://www.youtube.com/watch?v=c56gRLmDwUs";
+//string url2 = "https://www.youtube.com/watch?v=2tQnMwmhdrY";
+//string url3 = "https://www.youtube.com/watch?v=CowekQq6kY8";
+
+////Tapping
+//string url0 = "https://www.youtube.com/watch?v=uJzYKm1_Bvo";
+//string url1 = "https://www.youtube.com/watch?v=mxPgplMujzQ";
+//string url2 = "https://www.youtube.com/watch?v=p3YWWfnWBJM";
+//string url3 = "https://www.youtube.com/watch?v=1caGN5No89w";
+//https://www.youtube.com/watch?v=3i53_qIC31c
+//https://www.youtube.com/watch?v=Dq_sGy4H_-k
+
 
 string getYoutubeDlStream(string _link) //_link is the complete url, just like above.
 {
@@ -67,10 +130,19 @@ void ofApp::setup(){
     bang.setVolume(0.75f);
     bang.setMultiPlay(false);
     
-//    skirt.loadSound("sounds/Bang Sandy Rivera.mp3");
-//    skirt.setVolume(0.75f);
-//    skirt.setMultiPlay(false);
-    
+    ofxXmlSettings *XML = new ofxXmlSettings();
+    XML->loadFile("sounds/videoMeta.xml");
+    int videoTags = XML->getNumTags("Video");
+    for(int i = 0; i < videoTags; ++i) {
+        XML->pushTag("Video", i);
+        string url1 = XML->getValue("YouTube", "");
+        cout<< url1<<endl;
+        vidbpm = XML->getValue("BPM", 0.0);
+        bpmTapper[i].setBpm(vidbpm);
+        cout<< vidbpm<<endl;
+    }
+    XML->popTag();
+    delete XML;
     
     // Open a Youtube video feed
     // http://code.google.com/apis/youtube/2.0/developers_guide_protocol_video_feeds.html
@@ -87,30 +159,12 @@ void ofApp::setup(){
         // We want the first href string inside the link item
         //string youtube_url = youtube["feed"]["entry"][i]["link"][UInt(0)]["href"].asString();
         //cout << youtube_url << endl;
+//for(int i=0; i<4; i++){
+//    .asString()
     
-
     
-    
-//        string vid_url0 = getYoutubeDlStream("https://www.youtube.com/watch?v=yxGIHwpbKFU");
-//        string vid_url1 = getYoutubeDlStream("https://www.youtube.com/watch?v=qXbP4JBf8To");
-//        string vid_url2 = getYoutubeDlStream("https://www.youtube.com/watch?v=rw_M-ai1I0k");
-//        string vid_url3 = getYoutubeDlStream("https://www.youtube.com/watch?v=5P-TXxoWTSE");
-    //B&W
-//    string vid_url0 = getYoutubeDlStream("https://www.youtube.com/watch?v=8S3Yt-NxY0E");
-//    string vid_url1 = getYoutubeDlStream("https://www.youtube.com/watch?v=WwKFALb6Vw8");
-//    string vid_url2 = getYoutubeDlStream("https://www.youtube.com/watch?v=OeE1amkKuBU");
-//    string vid_url3 = getYoutubeDlStream("https://www.youtube.com/watch?v=ahoJReiCaPk");
-
-    
-        //90's 80's
-    string url0 = "https://www.youtube.com/watch?v=fA_r88JVAKE";
-    string url1 = "https://www.youtube.com/watch?v=otCpCn0l4Wo";
-    string url2 = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-    string url3 = "https://www.youtube.com/watch?v=WW659rsCYGQ";
-    
-
     string vid_url0 = getYoutubeDlStream(url0);
-    string vid_url1 = getYoutubeDlStream(url1);
+    //string vid_url1 = getYoutubeDlStream(url1);
     string vid_url2 = getYoutubeDlStream(url2);
     string vid_url3 = getYoutubeDlStream(url3);
     //https://www.youtube.com/watch?v=okvRdTYWkDI
@@ -126,7 +180,7 @@ void ofApp::setup(){
     
         //Load the video (from a url!)
         vids[0].loadMovie(vid_url0);
-        vids[1].loadMovie(vid_url1);
+        vids[1].loadMovie(vid_url2);
         vids[2].loadMovie(vid_url2);
         vids[3].loadMovie(vid_url3);
     
@@ -135,11 +189,11 @@ void ofApp::setup(){
         vids[i].setSpeed(1);
     }
     
-//    gui = new ofxUICanvas(newW/2, newH/2, 32, 32);
-//    gui->setDrawBack(true);
-//    gui->addMultiImageToggle("NUDGE BACK", "GUI/nudgeBk.png", false );
-//    ofAddListener(gui->newGUIEvent,this,&ofApp::guiEvent);
-
+//    vids[currentVid].setVolume(0);
+//    vidSpeed =  .01*(100*BPM/bpmTapper[currentVid].bpm());
+//    vids[currentVid].setSpeed(vidSpeed);
+//    gui1->setVisible(false);
+    
     
 }
 
@@ -364,33 +418,28 @@ void ofApp::guiEvent(ofxUIEventArgs &e)
         bang.setVolume(0.75f);
         bang.setMultiPlay(false);
     }
+    else if(name == "Till I Heard You Talking")
+    {
+        bang.loadSound("sounds/Till I Heard You Talking.m4a");
+        setBPM(123.0);
+        bang.setVolume(0.75f);
+        bang.setMultiPlay(false);
+    }
+    else if(name == "Take Me Over")
+    {
+        bang.loadSound("sounds/Take Me Over.m4a");
+        setBPM(123.0);
+        bang.setVolume(0.75f);
+        bang.setMultiPlay(false);
+    }
+    else if(name == "Living Without You")
+    {
+        bang.loadSound("sounds/07 Living Without You (MK Letting Go Remix).m4a");
+        setBPM(123.0);
+        bang.setVolume(0.75f);
+        bang.setMultiPlay(false);
+    }
     
-}
-
-//--------------------------------------------------------------
-void ofApp::exit()
-{
-    gui1->saveSettings("gui1Settings.xml");
-    gui2->saveSettings("gui2Settings.xml");
-    
-    
-
-    ofxXmlSettings *XML = new ofxXmlSettings();
-        //int len = widgetsWithState.size();
-        for(int i = 0; i < 4; ++i) {
-            int index = XML->addTag("Widget");
-            if(XML->pushTag("Widget", index)) {
-                XML->setValue("URL", "url", 0);
-                XML->setValue("BPM", bpmTapper[i].bpm(), 0);
-            }
-            XML->popTag();
-        }
-        XML->saveFile("sounds/videoMeta.xml");
-    delete XML;
-
-    delete gui1;
-    delete gui2;
-    delete[] buffer;
 }
 
 //--------------------------------------------------------------
@@ -612,7 +661,7 @@ void ofApp::setGUI2()
     gui2->setGlobalButtonDimension(BTNdim);
         vector<string> items;
         items.push_back("Bang - EDX"); items.push_back("EDM Trend Machine - Knife Party"); items.push_back("Okay - Shiba San");
-        items.push_back("All I See - Bondax"); items.push_back("This Could Be Love - Borgeous"); items.push_back("Milking - Croatia Squad"); items.push_back("Drop That Skirt - Croatia Squad");items.push_back("True - Nora En Pure");items.push_back("Sleepless - Cazzette");
+    items.push_back("All I See - Bondax"); items.push_back("This Could Be Love - Borgeous"); items.push_back("Milking - Croatia Squad"); items.push_back("Drop That Skirt - Croatia Squad");items.push_back("True - Nora En Pure");items.push_back("Sleepless - Cazzette");items.push_back("Till I Heard You Talking");items.push_back("Take Me Over");items.push_back("Living Without You");
     
     gui2->addMultiImageToggle("NUDGE BACK", "GUI/nudgeBk.png", false);
     gui2->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
@@ -704,4 +753,29 @@ void ofApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
     
+}
+
+//--------------------------------------------------------------
+void ofApp::exit()
+{
+    gui1->saveSettings("gui1Settings.xml");
+    gui2->saveSettings("gui2Settings.xml");
+    
+    //Save BPM information
+    ofxXmlSettings *XML = new ofxXmlSettings();
+    //int len = widgetsWithState.size();
+    for(int i = 0; i < 4; ++i) {
+        int index = XML->addTag("Video");
+        if(XML->pushTag("Video", index)) {
+            XML->setValue("YouTube", url0, 0);
+            XML->setValue("BPM", bpmTapper[i].bpm(), 0);
+        }
+        XML->popTag();
+    }
+    XML->saveFile("sounds/videoMeta.xml");
+    delete XML;
+    
+    delete gui1;
+    delete gui2;
+    delete[] buffer;
 }

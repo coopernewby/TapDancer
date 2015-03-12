@@ -79,6 +79,7 @@ public:
     float 				* fftSmoothed;
     
     msa::BPMTapper  bpmTapper[4];
+    float vidbpm;
     
     int newW;
     int newH;

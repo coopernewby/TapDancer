@@ -23,7 +23,7 @@
 <Widget>
     <Kind>31</Kind>
     <Name>PLAY</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>31</Kind>
@@ -88,10 +88,25 @@
 <Widget>
     <Kind>17</Kind>
     <Name>True - Nora En Pure</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
     <Name>Sleepless - Cazzette</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Till I Heard You Talking</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Take Me Over</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Living Without You</Name>
     <Value>0</Value>
 </Widget>
