@@ -4,8 +4,9 @@
 #include "ofxUI.h"
 
 #include "MSABPMTapper.h"
+#include "ofxMidi.h"
 
-class ofApp : public ofBaseApp{
+class ofApp : public ofBaseApp, public ofxMidiListener{
 public:
     void setup();
     void update();
@@ -33,6 +34,40 @@ public:
 
     void audioRequested (float * output, int bufferSize, int nChannels);
     void setBPM(float targetBPM);
+    
+    //MIDI mesaages
+    void newMidiMessage(ofxMidiMessage& eventArgs);
+    stringstream text;
+    ofxMidiIn midiIn;
+    ofxMidiMessage midiMessage;
+    
+    int messageIndex;
+    
+    int frameView;
+    int secondView;
+    int minView;
+    int hourView;
+    
+    bool frameReset;
+    
+    int testCounter;
+    
+    int tempoDenominator;
+    float ticksPerBar;
+    int tempoNumerator;
+    int ticksPerqNote;
+    int ticks32thNotePerBar;
+    int ticksPer32thNote;
+    int tempoTicks;
+    int ticksfor32thNote;
+    int num32thNotes;
+    int tempoqNotes;
+    int tempoBars;
+    bool isPlaying;
+    
+    int midiTempoTest;
+    int midiTempoCal;
+    
     
     ofSoundPlayer bang;
 //    ofSoundPlayer skirt;

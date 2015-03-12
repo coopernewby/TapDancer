@@ -114,6 +114,28 @@ void ofApp::setup(){
         fftSmoothed[i] = 0;
     }
     
+    ofSetVerticalSync(true);
+    //ofSetLogLevel(OF_LOG_VERBOSE);
+    
+    // print input ports to console
+    midiIn.listPorts(); // via instance
+    //ofxMidiIn::listPorts(); // via static as well
+    
+    // open port by number (you may need to change this)
+    midiIn.openPort(0);
+    //midiIn.openPort("IAC Pure Data In");	// by name
+    //midiIn.openVirtualPort("ofxMidiIn Input"); // open a virtual port
+    
+    // don't ignore sysex, timing, & active sense messages,
+    // these are ignored by default
+    midiIn.ignoreTypes(false, false, false);
+    
+    // add ofApp as a listener
+    midiIn.addListener(this);
+    
+    // print received messages to the console
+    midiIn.setVerbose(true);
+    
     textInput = NULL;
     buffer = new float[256];
     for(int i = 0; i < 256; i++) { buffer[i] = ofNoise(i/100.0); }
@@ -752,6 +774,93 @@ void ofApp::gotMessage(ofMessage msg){
 
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
+    
+}
+
+//--------------------------------------------------------------
+void ofApp::newMidiMessage(ofxMidiMessage& msg) {
+    
+    // make a copy of the latest message
+    midiMessage = msg;
+    
+    int tempoDenominator = 4;
+    int tempoNumerator = 4;
+    int ticksPerqNote = 48;
+    
+    int _ticksPerqNote = (int) 24.0 * 4.0/tempoDenominator;
+    ticksPerBar = tempoNumerator * ticksPerqNote;
+    ticks32thNotePerBar = (int) ticksPerBar/8.0;
+    ticksPer32thNote = (int) ticksPerqNote/8.0;
+    
+    if(msg.status == 248){
+        
+        tempoTicks += 1;
+        ticksfor32thNote +=1;
+        
+        if(ticksfor32thNote % ticksPer32thNote == 0 ) {
+            // if(num32thNotes % 2 == 0) midiOut.sendNoteOff(1, 62, 0);
+            // else  midiOut.sendNoteOn(1, 62, 127);
+            num32thNotes  += 1;
+        }
+        
+        
+        if(tempoTicks % _ticksPerqNote == 0 ) {
+            tempoqNotes += 1;
+            bpmTapper[5].tap();
+            tempoTicks = 0;
+            if (tempoqNotes % (tempoNumerator + 1) == 0 ) {
+                tempoBars += 1;
+                tempoqNotes = 1;
+                num32thNotes = 0;
+                ticksfor32thNote = 0;
+                //setBPM(bpmTapper[5].bpm());
+                
+                
+            }
+        }
+        
+        
+    }
+    
+    if(msg.status == MIDI_START) {
+        
+        //ticks = 0;
+        //qNotes = 0;
+        //bars = 0;
+        tempoTicks = 0;
+        tempoqNotes = 1;
+        tempoBars = 1;
+        isPlaying = false;
+        num32thNotes = 0;
+        ticksfor32thNote = 0;
+        
+        cout << " live Set playing ...." << endl;
+        
+        isPlaying = true;
+    };
+    
+    if(msg.status == MIDI_STOP) cout << " live Set paused " << endl;
+    
+    if(msg.status == MIDI_SONG_POS_POINTER
+       && msg.byteOne == 0 && msg.byteTwo == 0)  {
+        cout << " live Set  stopped " << endl;
+        tempoTicks = 0;
+        tempoqNotes = 1;
+        tempoBars = 1;
+        //isPlaying = false;
+        num32thNotes = 0;
+        ticksfor32thNote = 0;
+    }
+    if ((int)midiMessage.bytes[0]==190){
+        //        cout << "ch   : "<< (((int)midiMessage.bytes[0])) << endl;
+        cout << "ch   : "<< (((int)midiMessage.bytes[1])) << endl;
+        cout << "cont : " << (((int)midiMessage.bytes[2])) << endl;
+    }
+    
+    
+    //cout << "ch   : "<< (((int)midiMessage.bytes[0])) << endl;
+    //cout << "note : " << (((int)midiMessage.bytes[1])) << endl;
+    
     
 }
 

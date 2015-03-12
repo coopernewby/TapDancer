@@ -23,7 +23,7 @@
 <Widget>
     <Kind>31</Kind>
     <Name>PLAY</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>31</Kind>
@@ -48,7 +48,7 @@
 <Widget>
     <Kind>22</Kind>
     <Name>Select Song</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
@@ -83,7 +83,7 @@
 <Widget>
     <Kind>17</Kind>
     <Name>Drop That Skirt - Croatia Squad</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
